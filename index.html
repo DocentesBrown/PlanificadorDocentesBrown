@@ -6,10 +6,7 @@
   <title>Planificador Docentes Brown</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -17,53 +14,66 @@
     <div class="container topbar-inner">
       <div class="brand">
         <span class="brand-dot"></span>
-        <span class="brand-name">PLANIFICADOR DOCENTES BROWN</span>
+        <div>
+          <div class="brand-name">PLANIFICADOR DOCENTES BROWN</div>
+          <div class="brand-sub">GitHub Pages + Supabase + IA</div>
+        </div>
       </div>
 
       <nav class="topnav">
-        <button class="nav-btn active" data-view-target="home-view">Nueva planificación</button>
-        <button class="nav-btn" data-view-target="library-view">Mis planificaciones</button>
+        <button class="nav-btn active" type="button" data-view-target="home-view">Nueva planificación</button>
+        <button class="nav-btn" type="button" data-view-target="result-view">Resultado</button>
+        <button class="nav-btn" type="button" data-view-target="library-view">Guardadas</button>
       </nav>
     </div>
   </header>
 
-  <main class="app-shell container">
-    <!-- VISTA INICIO -->
+  <main class="container app-shell">
     <section id="home-view" class="view active">
       <div class="hero-grid">
-        <aside class="hero-panel card soft-card">
-          <span class="eyebrow">Herramienta docente</span>
-          <h1>PLANIFICADOR DOCENTES BROWN</h1>
-          <p class="hero-text">
-            Armá planificaciones de clase y secuencias en minutos.
+        <aside class="card hero-card">
+          <span class="eyebrow">Planificación premium</span>
+          <h1>Planificaciones concretas, no genéricas</h1>
+          <p class="hero-lead">
+            Esta versión está pensada para que la IA te devuelva preguntas reales, ejemplos concretos,
+            consignas textuales, registros, respuestas esperables e intervenciones docentes sugeridas.
           </p>
-          <p class="hero-subtext">
-            Completá los datos principales, personalizá si querés y obtené una propuesta lista para editar, guardar o exportar.
-          </p>
+          <div class="hero-chips">
+            <span class="mini-chip">GitHub Pages</span>
+            <span class="mini-chip">Supabase Edge Function</span>
+            <span class="mini-chip">Generación con IA</span>
+          </div>
+
+          <div class="card inset-card">
+            <h3>Qué resuelve mejor</h3>
+            <ul>
+              <li>Inicio con pregunta disparadora concreta.</li>
+              <li>Desarrollo con ejemplos y consignas paso a paso.</li>
+              <li>Registro claro de qué mirar y cómo anotar.</li>
+              <li>Cierre con evidencia concreta de aprendizaje.</li>
+            </ul>
+          </div>
 
           <div class="quick-actions">
-            <button class="chip-btn" id="quick-class-btn">Clase rápida</button>
-            <button class="chip-btn" id="quick-sequence-btn">Secuencia breve</button>
-            <button class="chip-btn" id="open-library-btn">Abrir guardadas</button>
+            <button class="chip-btn" id="quick-class-btn" type="button">Clase única premium</button>
+            <button class="chip-btn" id="quick-sequence-btn" type="button">Secuencia breve</button>
+            <button class="chip-btn" id="open-library-btn" type="button">Abrir guardadas</button>
           </div>
         </aside>
 
         <section class="card main-card">
           <div class="section-head">
-            <div>
-              <h2>Nueva planificación</h2>
-              <p>Completá los datos principales para generar una planificación automática.</p>
-            </div>
+            <h2>Nueva planificación</h2>
+            <p>Completá lo esencial. Ya dejé configurada la app para buscar una salida muy detallada.</p>
           </div>
 
           <form id="planning-form" class="planning-form" novalidate>
             <div class="form-block">
               <h3>Datos centrales</h3>
-
               <div class="field-grid two-cols">
                 <div class="field">
                   <label for="nivel">Nivel educativo</label>
-                  <select id="nivel" name="nivel" required>
+                  <select id="nivel" required>
                     <option value="">Seleccionar nivel</option>
                     <option value="inicial">Inicial</option>
                     <option value="primaria">Primaria</option>
@@ -76,13 +86,7 @@
 
                 <div class="field">
                   <label for="materia">Materia / espacio curricular</label>
-                  <input
-                    type="text"
-                    id="materia"
-                    name="materia"
-                    placeholder="Ej.: Química, Historia, Matemática"
-                    required
-                  />
+                  <input id="materia" type="text" placeholder="Ej.: Física, Historia, Lengua" required />
                   <small class="error-message"></small>
                 </div>
               </div>
@@ -90,25 +94,13 @@
               <div class="field-grid two-cols">
                 <div class="field">
                   <label for="curso">Curso / año / sala</label>
-                  <input
-                    type="text"
-                    id="curso"
-                    name="curso"
-                    placeholder="Ej.: 3° año"
-                    required
-                  />
+                  <input id="curso" type="text" placeholder="Ej.: 3° año" required />
                   <small class="error-message"></small>
                 </div>
 
                 <div class="field">
                   <label for="tema">Tema o contenido</label>
-                  <input
-                    type="text"
-                    id="tema"
-                    name="tema"
-                    placeholder="Ej.: Estados de la materia"
-                    required
-                  />
+                  <input id="tema" type="text" placeholder="Ej.: 1ra Ley de Newton" required />
                   <small class="error-message"></small>
                 </div>
               </div>
@@ -119,7 +111,7 @@
 
               <div class="field">
                 <label>Tipo de planificación</label>
-                <div class="segmented" id="tipo-planificacion-group">
+                <div class="segmented">
                   <label class="segment-option">
                     <input type="radio" name="tipoPlanificacion" value="clase-unica" checked />
                     <span>Clase única</span>
@@ -135,20 +127,20 @@
                 </div>
               </div>
 
-              <div class="field-grid three-cols">
+              <div class="field-grid four-cols">
                 <div class="field">
                   <label for="cantidadClases">Cantidad de clases</label>
-                  <input type="number" id="cantidadClases" name="cantidadClases" min="1" value="1" required />
+                  <input id="cantidadClases" type="number" min="1" value="1" required />
                   <small class="error-message"></small>
                 </div>
 
                 <div class="field">
                   <label for="duracion">Duración por clase</label>
-                  <select id="duracion" name="duracion" required>
+                  <select id="duracion" required>
                     <option value="">Seleccionar duración</option>
                     <option value="40 min">40 min</option>
                     <option value="50 min">50 min</option>
-                    <option value="80 min">80 min</option>
+                    <option value="80 min" selected>80 min</option>
                     <option value="90 min">90 min</option>
                     <option value="2 módulos">2 módulos</option>
                     <option value="otro">Otro</option>
@@ -157,46 +149,70 @@
                 </div>
 
                 <div class="field">
-                  <label for="formato">Formato de salida</label>
-                  <select id="formato" name="formato" required>
-                    <option value="">Seleccionar formato</option>
+                  <label for="formato">Formato</label>
+                  <select id="formato" required>
                     <option value="breve">Breve</option>
-                    <option value="completo">Completo</option>
+                    <option value="completo" selected>Completo</option>
                   </select>
                   <small class="error-message"></small>
+                </div>
+
+                <div class="field">
+                  <label for="nivelDetalle">Nivel de detalle</label>
+                  <select id="nivelDetalle">
+                    <option value="desarrollado">Desarrollado</option>
+                    <option value="premium" selected>Premium</option>
+                    <option value="premium-plus">Premium Plus</option>
+                  </select>
                 </div>
               </div>
 
               <div class="field hidden" id="custom-duration-wrap">
                 <label for="duracionCustom">Escribí la duración</label>
-                <input type="text" id="duracionCustom" name="duracionCustom" placeholder="Ej.: 60 min / 3 módulos" />
+                <input id="duracionCustom" type="text" placeholder="Ej.: 60 min / 3 módulos" />
               </div>
             </div>
 
             <div class="form-block">
-              <button type="button" class="accordion-toggle" id="toggle-advanced-btn">
-                Más opciones de personalización
-              </button>
-
+              <button type="button" class="accordion-toggle" id="toggle-advanced-btn">Más opciones de personalización</button>
               <div class="accordion-content hidden" id="advanced-options">
                 <div class="field-grid two-cols">
                   <div class="field">
-                    <label for="estilo">Estilo de propuesta</label>
-                    <select id="estilo" name="estilo">
-                      <option value="clasica">Clásica</option>
+                    <label for="estilo">Estilo</label>
+                    <select id="estilo">
+                      <option value="practico-realista" selected>Práctico y docente real</option>
+                      <option value="formal-institucional">Formal institucional</option>
                       <option value="creativa">Creativa</option>
-                      <option value="participativa">Participativa</option>
-                      <option value="observada">Clase observada</option>
+                      <option value="clase-observada">Clase observada</option>
                     </select>
                   </div>
 
                   <div class="field">
-                    <label for="grupo">Tipo de grupo</label>
-                    <select id="grupo" name="grupo">
+                    <label for="grupo">Perfil del grupo</label>
+                    <select id="grupo">
+                      <option value="heterogeneo" selected>Heterogéneo</option>
                       <option value="tranquilo">Tranquilo</option>
                       <option value="inquieto">Inquieto</option>
-                      <option value="heterogeneo">Heterogéneo</option>
                       <option value="poco-participativo">Poco participativo</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="field-grid two-cols">
+                  <div class="field">
+                    <label for="salida">Tipo de salida</label>
+                    <select id="salida">
+                      <option value="usable-en-clase" selected>Usable en clase</option>
+                      <option value="lista-para-inspeccion">Lista para inspección</option>
+                      <option value="mixta">Mixta</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <label for="modoIA">Modo de generación</label>
+                    <select id="modoIA">
+                      <option value="ia" selected>IA premium</option>
+                      <option value="fallback-local">Solo motor local</option>
                     </select>
                   </div>
                 </div>
@@ -204,7 +220,7 @@
                 <div class="field">
                   <label>Recursos disponibles</label>
                   <div class="checkbox-grid">
-                    <label><input type="checkbox" name="recursos" value="pizarron" /> Pizarrón</label>
+                    <label><input type="checkbox" name="recursos" value="pizarron" checked /> Pizarrón</label>
                     <label><input type="checkbox" name="recursos" value="fotocopias" /> Fotocopias</label>
                     <label><input type="checkbox" name="recursos" value="celulares" /> Celulares</label>
                     <label><input type="checkbox" name="recursos" value="proyector" /> Proyector</label>
@@ -214,83 +230,71 @@
                 </div>
 
                 <div class="field">
-                  <label for="observaciones">Observaciones del docente</label>
-                  <textarea
-                    id="observaciones"
-                    name="observaciones"
-                    rows="4"
-                    placeholder="Ej.: Quiero algo simple, ya vieron una parte del tema, necesito una actividad breve de cierre..."
-                  ></textarea>
+                  <label for="imprescindibles">Qué querés sí o sí en la planificación</label>
+                  <textarea id="imprescindibles" rows="4" placeholder="Ej.: Quiero pregunta disparadora concreta, tabla de registro, intervención docente, respuestas esperables y cierre con producción corta."></textarea>
                 </div>
 
-                <div class="field field-curricular">
+                <div class="field">
+                  <label for="observaciones">Observaciones del docente</label>
+                  <textarea id="observaciones" rows="4" placeholder="Ej.: Ya vieron una parte del tema, se distraen rápido, necesito algo realizable en 80 min."></textarea>
+                </div>
+
+                <div class="field">
                   <label for="alineacionTipo">Alineación curricular</label>
-                  <select id="alineacionTipo" name="alineacionTipo">
-                    <option value="none">No, generar libremente</option>
-                    <option value="texto">Sí, pegar texto</option>
+                  <select id="alineacionTipo">
+                    <option value="none" selected>No, generar libremente</option>
+                    <option value="texto">Sí, pegar texto curricular</option>
                     <option value="claves">Sí, escribir contenidos clave</option>
                   </select>
                 </div>
 
                 <div class="field hidden" id="curriculum-text-wrap">
                   <label for="alineacionTexto">Diseño curricular / contenido oficial</label>
-                  <textarea
-                    id="alineacionTexto"
-                    name="alineacionTexto"
-                    rows="6"
-                    placeholder="Pegá acá el diseño curricular, los contenidos oficiales o el recorte que quieras respetar..."
-                  ></textarea>
+                  <textarea id="alineacionTexto" rows="6" placeholder="Pegá acá el recorte curricular que querés respetar."></textarea>
                 </div>
 
                 <div class="field hidden" id="curriculum-keywords-wrap">
                   <label for="alineacionKeywords">Contenidos clave</label>
-                  <textarea
-                    id="alineacionKeywords"
-                    name="alineacionKeywords"
-                    rows="4"
-                    placeholder="Ej.: estados de la materia, cambios físicos, observación experimental..."
-                  ></textarea>
+                  <textarea id="alineacionKeywords" rows="4" placeholder="Ej.: inercia, fuerza neta, reposo, MRU"></textarea>
                 </div>
 
                 <label class="inline-check">
-                  <input type="checkbox" id="alineacionEstricta" name="alineacionEstricta" />
-                  <span>Priorizar estrictamente el diseño curricular cargado</span>
+                  <input type="checkbox" id="alineacionEstricta" />
+                  <span>Priorizar estrictamente la alineación curricular</span>
                 </label>
               </div>
             </div>
 
             <div class="form-actions">
-              <button type="submit" class="btn btn-primary">Generar planificación</button>
-              <button type="button" class="btn btn-secondary" id="reset-form-btn">Limpiar formulario</button>
+              <button class="btn btn-primary" type="submit">Generar con IA</button>
+              <button class="btn btn-secondary" id="reset-form-btn" type="button">Limpiar formulario</button>
             </div>
 
             <p class="form-note">
-              La planificación generada siempre podrá editarse antes de guardarse o exportarse.
+              Recomendación activa: generar primero con IA premium y, si hace falta, ajustar después a mano o duplicar.
             </p>
           </form>
         </section>
       </div>
     </section>
 
-    <!-- VISTA CARGA -->
     <section id="loading-view" class="view">
       <div class="loading-card card">
         <div class="spinner"></div>
-        <h2>Generando planificación...</h2>
-        <p id="loading-text">Organizando objetivos y contenidos.</p>
+        <h2>Generando planificación premium…</h2>
+        <p id="loading-text">Traduciendo el pedido a una secuencia concreta y usable.</p>
       </div>
     </section>
 
-    <!-- VISTA RESULTADO -->
     <section id="result-view" class="view">
       <div class="result-grid">
         <section class="card main-card">
           <div class="result-header">
-            <button class="btn btn-secondary" id="back-to-form-btn">← Volver a editar datos</button>
-
+            <button class="btn btn-secondary" id="back-to-form-btn" type="button">← Volver al formulario</button>
             <div class="result-actions">
-              <button class="btn btn-secondary" id="copy-plan-btn">Copiar</button>
-              <button class="btn btn-secondary" id="save-plan-btn">Guardar</button>
+              <button class="btn btn-secondary" id="copy-plan-btn" type="button">Copiar</button>
+              <button class="btn btn-secondary" id="save-plan-btn" type="button">Guardar</button>
+              <button class="btn btn-primary" id="export-pdf-btn" type="button">Exportar PDF</button>
             </div>
           </div>
 
@@ -299,12 +303,10 @@
 
         <aside class="result-sidebar">
           <div class="card sidebar-card">
-            <h3>Ajustes rápidos</h3>
-            <div class="chip-list">
-              <button class="chip-btn transform-btn" data-transform="simpler">Volver más simple</button>
-              <button class="chip-btn transform-btn" data-transform="stronger">Volver más potente</button>
-              <button class="chip-btn transform-btn" data-transform="moreCreative">Hacerla más creativa</button>
-              <button class="chip-btn transform-btn" data-transform="moreClassic">Hacerla más clásica</button>
+            <h3>Estado de la generación</h3>
+            <div id="generation-status" class="status-box">
+              <p><strong>Modo:</strong> IA premium</p>
+              <p><strong>Fuente:</strong> pendiente</p>
             </div>
           </div>
 
@@ -312,20 +314,23 @@
             <h3>Datos base usados</h3>
             <div id="meta-summary" class="meta-summary"></div>
           </div>
+
+          <div class="card sidebar-card">
+            <h3>Tip de uso</h3>
+            <p class="side-note">
+              Si una salida te gusta bastante pero querés otra variante, duplicá el pedido con un cambio chiquito en “Qué querés sí o sí”.
+            </p>
+          </div>
         </aside>
       </div>
     </section>
 
-    <!-- VISTA BIBLIOTECA -->
     <section id="library-view" class="view">
       <section class="card main-card">
         <div class="section-head">
-          <div>
-            <h2>Mis planificaciones</h2>
-            <p>Accedé a tus planificaciones guardadas localmente en este dispositivo.</p>
-          </div>
+          <h2>Planificaciones guardadas</h2>
+          <p>Se guardan localmente en este navegador para que puedas retomarlas rápido.</p>
         </div>
-
         <div id="library-list" class="library-list"></div>
       </section>
     </section>
@@ -333,7 +338,9 @@
 
   <div id="toast" class="toast hidden"></div>
 
-  <script src="generator.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-y0Cn4xj8i7QnI/8mBvW6Qm6qjUpBAkLTlaX2UjsFvdcGaVbL50DJBSSTXQHxPPH/F+N6HlkRQAt2bQVWwtD9Yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="config.js"></script>
+  <script src="fallback-generator.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
